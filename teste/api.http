@@ -1,0 +1,16 @@
+@host=localhost:8000
+
+###
+
+GET /api/pedidos/2
+Host: {{host}}
+
+###
+
+POST /api/materials
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "nome": "zypper"
+}
