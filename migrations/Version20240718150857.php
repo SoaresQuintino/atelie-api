@@ -40,6 +40,7 @@ final class Version20240718150857 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
+        
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('DROP SEQUENCE preco_produtos_id_seq CASCADE');
         $this->addSql('CREATE TABLE empresa (id INT NOT NULL, endereco_id INT NOT NULL, nome VARCHAR(255) NOT NULL, cnpj VARCHAR(255) NOT NULL, telefone VARCHAR(255) NOT NULL, email VARCHAR(255) DEFAULT NULL, setor VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
