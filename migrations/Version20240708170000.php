@@ -20,7 +20,6 @@ final class Version20240708170000 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP SEQUENCE item_pedido_id_seq CASCADE');
         $this->addSql('CREATE SEQUENCE clientes_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE pedido_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE TABLE clientes (id INT NOT NULL, endereco_id INT NOT NULL, pessoa_id INT NOT NULL, PRIMARY KEY(id))');
@@ -40,7 +39,6 @@ final class Version20240708170000 extends AbstractMigration
 
         $this->addSql('DROP SEQUENCE clientes_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE pedido_id_seq CASCADE');
-        $this->addSql('CREATE SEQUENCE item_pedido_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('ALTER TABLE clientes DROP CONSTRAINT FK_50FE07D71BB76823');
         $this->addSql('ALTER TABLE clientes DROP CONSTRAINT FK_50FE07D7DF6FA0A5');
         $this->addSql('ALTER TABLE preco_produtos DROP CONSTRAINT FK_737BC26A65691519');
