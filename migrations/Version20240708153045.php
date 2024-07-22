@@ -14,21 +14,21 @@ final class Version20240708153045 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Create Categoria';
+        return 'Create Categorias';
     }
 
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE SEQUENCE categoria_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE categoria (id INT NOT NULL, nome VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE SEQUENCE categorias_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE TABLE categorias (id INT NOT NULL, nome VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
 
-        $this->addSql('DROP SEQUENCE categoria_id_seq CASCADE');
-        $this->addSql('DROP TABLE categoria');
+        $this->addSql('DROP SEQUENCE categorias_id_seq CASCADE');
+        $this->addSql('DROP TABLE categorias');
     }
 }
