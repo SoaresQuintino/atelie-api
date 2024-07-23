@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table('pagamentos')]
 #[ORM\Entity(repositoryClass: PagamentoRepository::class)]
 #[ApiResource]
+
 class Pagamento
 {
     #[ORM\Id]
@@ -19,7 +20,7 @@ class Pagamento
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?MetodoDePagamento $metodo_pagamento = null;
+    private ?MetodoDePagamento $metodoPagamento = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
@@ -41,12 +42,12 @@ class Pagamento
 
     public function getMetodoPagamento(): ?MetodoDePagamento
     {
-        return $this->metodo_pagamento;
+        return $this->metodoPagamento;
     }
 
-    public function setMetodoPagamento(?MetodoDePagamento $metodo_pagamento): static
+    public function setMetodoPagamento(?MetodoDePagamento $metodoPagamento): static
     {
-        $this->metodo_pagamento = $metodo_pagamento;
+        $this->metodoPagamento = $metodoPagamento;
 
         return $this;
     }

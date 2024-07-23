@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table('clientes')]
 #[ORM\Entity(repositoryClass: ClienteRepository::class)]
 #[ApiResource]
+
 class Cliente extends Pessoa
 {
 }

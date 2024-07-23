@@ -7,6 +7,9 @@ use App\Repository\PedidoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Context;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use ApiPlatform\Metadata\ApiProperty;
 
 #[ORM\Entity(repositoryClass: PedidoRepository::class)]
 #[ApiResource]
@@ -26,6 +29,8 @@ class Pedido
     #[ORM\JoinColumn(nullable: false)]
     private ?MetodoDePagamento $metodoPagamento = null;
 
+    #[Context([DateTimeNormalizer::FORMAT_KEY=>"d/m/y"])]
+    #[ApiProperty(example:"10/12/2024")]
     #[ORM\Column(length: 255)]
     private ?string $data = null;
 

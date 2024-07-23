@@ -2,12 +2,32 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiProperty;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Repository\CartaoRepository;
+use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Context;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Table('cartoes')]
 #[ORM\Entity(repositoryClass: CartaoRepository::class)]
+#[ApiResource()]
+#[GetCollection("cartoes")]
+#[Get("cartoes/{id}")]
+#[Post("cartoes")]
+#[Put("cartoes/{id}")]
+#[Patch("cartoes/{id}")]
+#[Delete("cartoes/{id}")]
+
 class Cartao
 {
     #[ORM\Id]
@@ -16,21 +36,28 @@ class Cartao
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Regex("/^[\d]{15,16}$/")]
     private ?string $numero = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nome_titular = null;
+    private ?string $nomeTitular = null;
 
+    
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $data_validade = null;
+    #[Context([DateTimeNormalizer::FORMAT_KEY=>"m/y"])]
+    #[ApiProperty(example:"12/32")]
+    private ?\DateTime $dataValidade = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $codigo_seguranca = null;
+    #[Assert\Regex("/^[\d]{3,4}$/")]
+    private ?string $codigoSeguranca = null;
 
     #[ORM\Column(length: 255)]
+    #[ApiProperty(example:"Mastercard")]
     private ?string $bandeira = null;
 
     #[ORM\Column(length: 255)]
+    #[ApiProperty(example:"Debito")]
     private ?string $tipo = null;
 
     public function getId(): ?int
@@ -52,36 +79,36 @@ class Cartao
 
     public function getNomeTitular(): ?string
     {
-        return $this->nome_titular;
+        return $this->nomeTitular;
     }
 
-    public function setNomeTitular(string $nome_titular): static
+    public function setNomeTitular(string $nomeTitular): static
     {
-        $this->nome_titular = $nome_titular;
+        $this->nomeTitular = $nomeTitular;
 
         return $this;
     }
 
     public function getDataValidade(): ?\DateTimeInterface
     {
-        return $this->data_validade;
+        return $this->dataValidade;
     }
 
-    public function setDataValidade(\DateTimeInterface $data_validade): static
+    public function setDataValidade(\DateTimeInterface $dataValidade): static
     {
-        $this->data_validade = $data_validade;
+        $this->dataValidade = $dataValidade;
 
         return $this;
     }
 
     public function getCodigoSeguranca(): ?string
     {
-        return $this->codigo_seguranca;
+        return $this->codigoSeguranca;
     }
 
-    public function setCodigoSeguranca(string $codigo_seguranca): static
+    public function setCodigoSeguranca(string $codigoSeguranca): static
     {
-        $this->codigo_seguranca = $codigo_seguranca;
+        $this->codigoSeguranca = $codigoSeguranca;
 
         return $this;
     }

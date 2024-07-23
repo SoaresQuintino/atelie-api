@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EnderecoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EnderecoRepository::class)]
 #[ORM\Table('enderecos')]
@@ -32,6 +33,7 @@ class Endereco
     #[ORM\Column(length: 255)]
     private ?string $estado = null;
 
+    #[Assert\Regex("/^\d{5}-\d{3}$/")]
     #[ORM\Column(length: 255)]
     private ?string $cep = null;
 

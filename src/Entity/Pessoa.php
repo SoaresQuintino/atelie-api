@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\PessoaRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PessoaRepository::class)]
@@ -22,21 +24,31 @@ class Pessoa
     #[ORM\Column(length: 255)]
     private ?string $nome = null;
 
+  
+    #[Assert\Regex('/^\d{2}\.\d{3}\.\d{3}-\d{1}$/')]
     #[ORM\Column(length: 255)]
     private ?string $rg = null;
 
     #[ORM\Column(length: 255, unique: true)]
+
+    #[ApiProperty(example:"400.500.500-50")]
+    #[Assert\NotNull(message:"O CPF não pode ser nulo ")]
     #[Assert\Regex('/^[\d]{3}.[\d]{3}.[\d]{3}-[\d]{2}$/')]
     private ?string $cpf = null;
 
+  
     #[ORM\Column(length: 255)]
-    #[Assert\Regex('/^[\d]{2}\/[\d]{2}\/[\d]{4}$/')]
+    #[Assert\Regex('/^(0[1-9]|[1-2]\d|3[0-1])\/(0[1-9]|1[0-2])\/(19\d{2}|20[0-1]\d|202[0-4])$/', message:"A data de nascimento tem que ser no formato DD/MM/AAAA")]
+    #[ApiProperty(example:"10/05/1991")]
     private ?string $dataNascimento = null;
+
+
 
     #[ORM\ManyToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Endereco $endereco = null;
 
+    #[Assert\Regex("/^\(\d{2}\) \d{4,5}-\d{4}$/")]
     #[ORM\Column(length: 255)]
     private ?string $telefone = null;
 
@@ -46,10 +58,12 @@ class Pessoa
     #[ORM\Column(length: 255)]
     private ?string $genero = null;
 
+    #[Assert\Regex("/^\d{12}$/")]
     #[ORM\Column(length: 255)]
     private ?string $tituloEleitoral = null;
 
-    #[ORM\Column(length: 255)]
+    #[Assert\Regex("/^\d{12}$/")]
+    #[ORM\Column(length: 255, nullable:true)]
     private ?string $reservista = null;
 
     public function getId(): ?int

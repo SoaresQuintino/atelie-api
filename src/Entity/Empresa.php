@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\EmpresaRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Table('empresas')]
 #[ORM\Entity(repositoryClass: EmpresaRepository::class)]
@@ -17,22 +19,28 @@ class Empresa
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ApiProperty(example:"Atelie Bela Arte")]
     #[ORM\Column(length: 255)]
     private ?string $nome = null;
 
-    #[ORM\Column(length: 255, unique: true)]
+    #[Assert\Regex("/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/")]
+    #[ORM\Column(length: 255, unique: true, type: 'cnpj')]
     private ?string $cnpj = null;
 
+    #[ApiProperty(example:"João Finotti 32")]
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Endereco $endereco = null;
 
 
+    #[Assert\Regex("/^\(\d{2}\) \d{4,5}-\d{4}$/")]
     #[ORM\Column(length: 255)]
     private ?string $telefone = null;
 
+    #[ApiProperty(example:" ateliebelaarte@gmail.com ")]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $email = null;
+
 
     #[ORM\Column(length: 255)]
     private ?string $setor = null;

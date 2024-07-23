@@ -7,6 +7,8 @@ use App\Repository\ProdutosRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Metadata\ApiProperty;
 
 #[ORM\Table('produtos')]
 #[ORM\Entity(repositoryClass: ProdutosRepository::class)]
@@ -18,6 +20,7 @@ class Produto
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ApiProperty(example:"Carteira Infantil")]
     #[ORM\Column(length: 255)]
     private ?string $nome = null;
 
@@ -25,24 +28,32 @@ class Produto
     #[ORM\JoinColumn(nullable: false)]
     private ?Categoria $categoria = null;
 
+    #[ApiProperty(example:"Atelie Bela Arte")]
     #[ORM\Column(length: 255)]
     private ?string $marca = null;
 
+   
+    #[Assert\Regex("/^\d{3}([.,]\d{1,3})?$/")]
     #[ORM\Column(length: 255)]
     private ?string $peso = null;
 
+    #[ApiProperty(example:"Link da foto")]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $urlimagem = null;
 
+    #[Assert\Regex("/^\d{3}([.,]\d{1,3})?$/")]
     #[ORM\Column(length: 255)]
     private ?string $largura = null;
 
+    #[Assert\Regex("/^\d{3}([.,]\d{1,3})?$/")]
     #[ORM\Column(length: 255)]
     private ?string $altura = null;
 
+    #[Assert\Regex("/^\d{3}([.,]\d{1,3})?$/")]
     #[ORM\Column(length: 255)]
     private ?string $comprimento = null;
 
+    #[ApiProperty(example:"Nossa carteira personalizada é perfeita para as crianças guardarem seu dinheiro...")]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $descricao = null;
 

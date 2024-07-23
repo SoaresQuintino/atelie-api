@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\FuncionarioRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Table('funcionarios')]
 #[ORM\Entity(repositoryClass: FuncionarioRepository::class)]

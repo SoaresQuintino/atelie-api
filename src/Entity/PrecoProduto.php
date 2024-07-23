@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\PrecoProdutoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Table('preco_produtos')]
 #[ORM\Entity(repositoryClass: PrecoProdutoRepository::class)]
@@ -21,6 +22,7 @@ class PrecoProduto
     private ?Produto $produtos = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Regex("/^\d+([.,]\d{1,2})?$/")]
     private ?string $preco = null;
 
     public function getId(): ?int
