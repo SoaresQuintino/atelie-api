@@ -24,7 +24,7 @@ class Empresa
     private ?string $nome = null;
 
     #[Assert\Regex("/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/")]
-    #[ORM\Column(length: 255, unique: true, type: 'cnpj')]
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $cnpj = null;
 
     #[ApiProperty(example:"João Finotti 32")]
