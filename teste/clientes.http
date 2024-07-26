@@ -1,0 +1,82 @@
+@host=localhost:8000
+
+###
+
+POST /api/clientes
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "nome": "Alex Soares",
+  "rg": "47.397.401-0",
+  "cpf": "407.573.428-50",
+  "dataNascimento": "10/05/1991",
+  "endereco": {
+    "rua": "Rua Helena",
+    "numero": "87",
+    "complemento": "fundos",
+    "bairro": "Centro",
+    "cidade": "Carapicuiba",
+    "estado": "SP",
+    "cep": "06320-310",
+    "pais": "Brasil"
+  },
+  "telefone": "1199661-5931",
+  "email": "soaresquintiino@gmail.com",
+  "genero": "M",
+  "tituloEleitoral": "12334566",
+  "reservista": "7665754"
+}
+
+###
+
+GET /api/clientes
+Host: {{host}}
+
+###
+
+GET /api/clientes/1
+Host: {{host}}
+
+###
+
+PUT api/clientes
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "nome": "string",
+  "rg": "string",
+  "cpf": "577B9928943-46",
+  "dataNascimento": "87/96/8380",
+  "endereco": {
+    "rua": "string",
+    "numero": "string",
+    "complemento": "string",
+    "bairro": "string",
+    "cidade": "string",
+    "estado": "string",
+    "cep": "string",
+    "pais": "string"
+  },
+  "telefone": "string",
+  "email": "string",
+  "genero": "string",
+  "tituloEleitoral": "string",
+  "reservista": "string"
+}
+
+PATCH /api/clientes
+Host: {{host}}
+Content-Type: application/merge-patch+json
+
+{
+    
+    "bairro": "string",
+    "cidade": "string",
+    "estado": "string",
+}
+
+###
+DELETE /api/clientes
+Host: {{host}}

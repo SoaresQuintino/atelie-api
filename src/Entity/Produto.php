@@ -32,26 +32,25 @@ class Produto
     #[ORM\Column(length: 255)]
     private ?string $marca = null;
 
-   
-    #[Assert\Regex("/^\d{3}([.,]\d{1,3})?$/")]
+    #[Assert\Positive()]
     #[ORM\Column(length: 255)]
-    private ?string $peso = null;
+    private ?float $peso = null;
 
     #[ApiProperty(example:"Link da foto")]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $urlimagem = null;
 
-    #[Assert\Regex("/^\d{3}([.,]\d{1,3})?$/")]
+    #[Assert\Positive()]
     #[ORM\Column(length: 255)]
-    private ?string $largura = null;
+    private ?float $largura = null;
 
-    #[Assert\Regex("/^\d{3}([.,]\d{1,3})?$/")]
+    #[Assert\Positive()]
     #[ORM\Column(length: 255)]
-    private ?string $altura = null;
+    private ?float $altura = null;
 
-    #[Assert\Regex("/^\d{3}([.,]\d{1,3})?$/")]
+    #[Assert\Positive()]
     #[ORM\Column(length: 255)]
-    private ?string $comprimento = null;
+    private ?float $comprimento = null;
 
     #[ApiProperty(example:"Nossa carteira personalizada é perfeita para as crianças guardarem seu dinheiro...")]
     #[ORM\Column(length: 255, nullable: true)]
@@ -62,6 +61,9 @@ class Produto
      */
     #[ORM\ManyToMany(targetEntity: Material::class)]
     private Collection $material;
+
+    #[ORM\Column]
+    private ?float $preco = null;
 
     public function __construct()
     {
@@ -109,12 +111,12 @@ class Produto
         return $this;
     }
 
-    public function getPeso(): ?string
+    public function getPeso(): ?float
     {
         return $this->peso;
     }
 
-    public function setPeso(string $peso): static
+    public function setPeso(float $peso): static
     {
         $this->peso = $peso;
 
@@ -133,36 +135,36 @@ class Produto
         return $this;
     }
 
-    public function getLargura(): ?string
+    public function getLargura(): ?float
     {
         return $this->largura;
     }
 
-    public function setLargura(string $largura): static
+    public function setLargura(float $largura): static
     {
         $this->largura = $largura;
 
         return $this;
     }
 
-    public function getAltura(): ?string
+    public function getAltura(): ?float
     {
         return $this->altura;
     }
 
-    public function setAltura(string $altura): static
+    public function setAltura(float $altura): static
     {
         $this->altura = $altura;
 
         return $this;
     }
 
-    public function getComprimento(): ?string
+    public function getComprimento(): ?float
     {
         return $this->comprimento;
     }
 
-    public function setComprimento(string $comprimento): static
+    public function setComprimento(float $comprimento): static
     {
         $this->comprimento = $comprimento;
 
@@ -201,6 +203,18 @@ class Produto
     public function removeMaterial(Material $material): static
     {
         $this->material->removeElement($material);
+
+        return $this;
+    }
+
+    public function getPreco(): ?float
+    {
+        return $this->preco;
+    }
+
+    public function setPreco(float $preco): static
+    {
+        $this->preco = $preco;
 
         return $this;
     }

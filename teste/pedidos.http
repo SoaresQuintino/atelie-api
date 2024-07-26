@@ -1,0 +1,78 @@
+@host=localhost:8000
+
+###
+
+POST /api/pedidos
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "cliente": "\/api\/clientes\/3",
+  "metodoPagamento": "\/api\/metodo_de_pagamentos\/",
+  "data": "10/05/2024",
+  "entrega": "25/05/2023",
+  "statusPedido": "\/api\/status_pedidos\/2",
+  "total": "90R$",
+  "itensPedido": [
+    {
+      "produto": "\/api\/produtos\/1",
+      "precoUnitario": "25R$",
+      "quantidade": "2 "
+    }
+  ]
+}
+
+###
+
+GET /api/pedidos
+Host: {{host}}
+
+###
+
+GET /api/pedidos/
+Host: {{host}}
+
+###
+
+PUT api/pedidos
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "cliente": "https://example.com/",
+  "metodoPagamento": "https://example.com/",
+  "data": "string",
+  "entrega": "string",
+  "statusPedido": "https://example.com/",
+  "total": "string",
+  "itensPedido": [
+    {
+      "produto": "https://example.com/",
+      "precoUnitario": "string",
+      "quantidade": "string"
+    }
+  ]
+}
+
+###
+
+PATCH /api/pedidos/1
+Host: {{host}}
+Content-Type: application/merge-patch+json
+{
+
+ "data": "string",
+ "entrega": "string"
+
+}
+
+###
+
+DELETE /api/pedidos/
+Host: {{host}}
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+@host=localhost:8000
+
+###
+POST /api/preco_produtos
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "produtos": "\/api\/produtos\/1",
+  "preco": "20 R$"
+}
+
+###
+GET /api/preco_produtos
+Host: {{host}}
+
+###
+GET /api/preco_produtos
+Host: {{host}}
+
+### Enviar todos os campos pra atualizar
+
+PUT /api/preco_produtos
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "nome": "",
+  "sobrenome": "kkkk"
+}
+
+### Enviar somente o campo que quero atualizar  
+
+PATCH /api/preco_produtos
+Host: {{host}}
+Content-Type: application/merge-patch+json
+
+{
+  "produtos": "https://example.com/",
+  "preco": "string"
+}
+
+###
+
+DELETE /api/preco_produtos
+Host: {{host}}
+

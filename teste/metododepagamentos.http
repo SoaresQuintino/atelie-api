@@ -1,0 +1,48 @@
+@host=localhost:8000
+
+###
+
+POST /api/metodo_de_pagamentos
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "name": " crédito "
+}
+
+###
+
+GET /api/metodo_de_pagamentos
+Host: {{host}}
+
+###
+
+GET /api/metodo_de_pagamentos/1
+Host: {{host}}
+
+###
+
+PUT /api/metodo_de_pagamentos/1
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "name": "débito"
+}
+
+###
+
+PATCH  /api/metodo_de_pagamentos/1
+Host: {{host}}
+Content-Type: application/merge-patch+json
+
+{
+  "name": "auzl"
+}
+
+###
+
+DELETE /api/metodo_de_pagamentos
+Host: {{host}}
+
+

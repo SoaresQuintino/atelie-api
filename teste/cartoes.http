@@ -1,0 +1,60 @@
+@host=localhost:8000
+
+###
+POST /api/cartoes
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "numero": "5327189183041293",
+  "nomeTitular": "Alex Soares Quintino",
+  "dataValidade": "2024-07-22",
+  "codigoSeguranca": "3119",
+  "bandeira": "string",
+  "tipo": "string"
+}
+
+###
+GET /api/cartoes
+Host: {{host}}
+
+###
+GET /api/cartoes/1
+Host: {{host}}
+
+### Enviar todos os campos pra atualizar
+
+PUT /api/cartoes/1
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "numero": "041262878058212",
+  "nomeTitular": "string",
+  "dataValidade": "35390",
+  "codigoSeguranca": "4623",
+  "bandeira": "string",
+  "tipo": "string"
+}
+### Enviar somente o campo que quero atualizar  
+
+PATCH /api/cartoes/1
+Host: {{host}}
+Content-Type: application/merge-patch+json
+
+{
+  "numero": "197012466246632",
+  "nome_titular": "string",
+  "data_validade": "2024-07-22T17:43:01.161Z",
+  "codigo_seguranca": "7749",
+  "bandeira": "string",
+  "tipo": "string",
+  "nomeTitular": "string",
+  "dataValidade": "2024-07-22T17:43:01.162Z",
+  "codigoSeguranca": "string"
+}
+###
+
+DELETE /api/cartoes/1
+Host: {{host}}
+

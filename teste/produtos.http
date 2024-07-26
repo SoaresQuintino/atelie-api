@@ -1,0 +1,77 @@
+@host=localhost:8000
+
+###
+
+POST /api/produtos
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "nome": "Mochila cristal com bolso 3D",
+  "categoria": "\/api\/categorias\/2",
+  "marca": "Atelie Bela arte",
+  "peso":19.00,
+  "urlimagem":"https://images-offstore.map.azionedge.net/compressed/b44e588dae0dc5bba15e72353132117e.webp",
+  "largura": 16.80,
+  "altura": 19.00,
+  "comprimento": 19.08,
+  "descricao": "Descubra as mochilas que se tornaram as preferidas das crianças",
+  "preco":26.00,
+  "material": [
+    "\/api\/materials\/1"
+  ]
+}
+
+###
+
+GET /api/produtos
+Host: {{host}}
+
+###
+
+GET /api/produtos/1
+Host: {{host}}
+
+###
+
+PATCH  /api/produtos/3
+Host: {{host}}
+Content-Type: application/merge-patch+json
+
+{
+   "preco": 20.25,
+   "peso": 11,
+   "comprimento":8.1,
+   "largura": 90,
+   "altura":1.50
+   
+
+}
+
+###
+
+
+PUT   /api/produtos/1
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "nome": "Bolsa Lousa",
+  "categoria": "\/api\/categorias\/1",
+  "marca": "ateleie",
+  "peso": "600g",
+  "urlimagem":"https://images-offstore.map.azionedge.net/compressed/ceab2038e5338d6ac714514dc46734fd.webp",
+  "largura": "600cm",
+  "altura": "700cm",
+  "comprimento": "200cm",
+  "descricao": "Bolsa lousa linda de mais",
+  "material": [
+    "\/api\/materials\/1"
+  ]
+}
+
+###
+
+DELETE /api/produtos/1
+Host: {{host}}
+

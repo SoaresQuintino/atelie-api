@@ -1,0 +1,53 @@
+@host=localhost:8000
+
+###
+POST /api/colecaoes 
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "nome": "string",
+  "descricao": "string",
+  "imagem": "string",
+  "ativo": "string",
+  "produtos": [
+    "https://example.com/"
+  ]
+}
+
+###
+
+GET /api/colecoes
+Host: {{host}}
+
+###
+GET /api/colecaoes/1
+Host: {{host}}
+
+### Enviar todos os campos pra atualizar
+
+PUT /api/colecaoes/1
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "nome": "Cestinho",
+  "sobrenome": "kkkk"
+}
+
+### Enviar somente o campo que quero atualizar  
+
+PATCH /api/colecaoes/1
+Host: {{host}}
+Content-Type: application/merge-patch+json
+
+{
+  "nome": "Cestinho"
+}
+
+###
+
+DELETE /api/categorias/4
+Host: {{host}}
+
+

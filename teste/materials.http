@@ -2,7 +2,7 @@
 
 ###
 
-GET /api/pedidos/2
+GET /api/materials
 Host: {{host}}
 
 ###
@@ -14,3 +14,4 @@ Content-Type: application/ld+json
 {
   "nome": "zypper"
 }
+

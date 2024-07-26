@@ -1,0 +1,44 @@
+@host=localhost:8000
+
+###
+POST /api/status_pedidos
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "nome": "Em produção"
+}
+
+###
+
+GET /api/status_pedidos
+Host: {{host}}
+####
+
+GET /api/status_pedidos/2
+Host: {{host}}
+###
+
+PUT  /api/status_pedidos/2
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "nome": "Ativo"
+}
+
+###
+
+PATCH /api/status_pedidos/2
+Host: {{host}}
+Content-Type: application/merge-patch+json
+
+{
+  "nome": "Ativoo"
+}
+
+###
+
+DELETE /api/status_pedidos/1
+Host: {{host}}
+

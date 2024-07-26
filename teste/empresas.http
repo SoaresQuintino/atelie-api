@@ -1,0 +1,74 @@
+@host=localhost:8000
+
+POST /api/empresas
+Host: {{host}}
+Content-Type: application/ld+json
+{
+  "nome": "string",
+  "cnpj": "string",
+  "endereco": {
+    "rua": "string",
+    "numero": "string",
+    "complemento": "string",
+    "bairro": "string",
+    "cidade": "string",
+    "estado": "string",
+    "cep": "string",
+    "pais": "string"
+  },
+  "telefone": "string",
+  "email": "string",
+  "setor": "string"
+}
+
+###
+
+GET /api/empresas
+Host: {{host}}
+
+###
+
+GET /api/empresas
+Host: {{host}}
+
+###
+
+PUT /api/empresas
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "nome": "string",
+  "cnpj": "string",
+  "endereco": {
+    "rua": "string",
+    "numero": "string",
+    "complemento": "string",
+    "bairro": "string",
+    "cidade": "string",
+    "estado": "string",
+    "cep": "string",
+    "pais": "string"
+  },
+  "telefone": "string",
+  "email": "string",
+  "setor": "string"
+}
+
+###
+
+PATCH /api/empresas
+Host: {{host}}
+Content-Type: application/merge-patch+json
+
+{
+    "estado": "string",
+    "cep": "string",
+    "pais": "string"
+}
+
+###
+
+DELETE /api/empresas
+Host: {{host}}
+

@@ -1,0 +1,56 @@
+@host=localhost:8000
+
+###
+
+POST /api/pagamentos
+Host: {{host}}
+Content-Type: application/ld+json
+
+{
+  "metodo_pagamento": "https://example.com/",
+  "pedido": "https://example.com/",
+  "data": "2024-07-18T20:15:10.102Z",
+  "parcelamento": "string",
+  "valor": "string",
+  "metodoPagamento": "https://example.com/"
+}
+
+###
+
+GET /api/pagamentos
+Host: {{host}}
+
+###
+
+GET /api/pagamentos/1
+Host: {{host}}
+
+###
+
+PUT /api/pagamentos
+Host: {{host}}
+Content-Type: application/ld+json
+{
+  "metodo_pagamento": "https://example.com/",
+  "pedido": "https://example.com/",
+  "data": "2024-07-18T20:18:06.608Z",
+  "parcelamento": "string",
+  "valor": "string",
+  "metodoPagamento": "https://example.com/"
+}
+
+###
+PATCH /api/pagamentos
+Host: {{host}}
+Content-Type: application/merge-pacth+json
+
+{
+ 
+ "data": "2024-07-18T20:18:06.608Z",
+ "parcelamento": "string",
+
+}
+
+DELETE /api/pagamentos
+Host: {{host}}
+
